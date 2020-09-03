@@ -21,15 +21,10 @@ void repeat_char( int n , char rpChar ){
 
 void title_card( c_str title , int wingWidth , char wingChar ){
     // Print a title card with wings and a newline
-    // printf( "1\n" );
     repeat_char( wingWidth , wingChar );
-    // printf( "2\n" );
     printf( " " );
-    // printf( "3\n" );
     printf( "%s" , title );
-    // printf( "4\n" );
     printf( " " );
-    // printf( "5\n" );
     repeat_char( wingWidth , wingChar );
     nl();
 }
@@ -69,5 +64,3 @@ void print_hex_int( unsigned int a ){
 		printf( "%02hhX " , byte );
 	}
 }
-
-

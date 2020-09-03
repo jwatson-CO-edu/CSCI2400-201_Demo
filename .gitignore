@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Custom Ignores
+Wk01_DataI/.ipynb_checkpoints/*
+Wk01_DataI/.ipynb_checkpoints
+Wk02_DataII/.ipynb_checkpoints/*
+Wk02_DataII/.ipynb_checkpoints

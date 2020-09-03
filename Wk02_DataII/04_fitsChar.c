@@ -1,12 +1,10 @@
 /*
- * FILENAME.c
- * James Watson , 20YY MONTHNAME
- * A_ONE_LINE_DESCRIPTION_OF_THE_FILE
+ * 04_fitsChar.c
+ * James Watson , 2020 August
+ * Short demo of binary rep and overflow in signed integers; char, short
  */ 
 
 #include "demo2400_helpers.h" // Convenience functions for class demos
-
-
 
 int main( int argc , char *argv[] ){     printf( "Demo start ...\n\n" );
 	

@@ -7,10 +7,12 @@
 #include "demo2400_helpers.h" // Convenience functions for class demos
 
 
-int main( int argc , char *argv[] ){     printf( "Demo start ...\n\n" );
-	printf( "==== Demo start ... ====\n\n" );
+int main( int argc , char *argv[] ){     
+    title_card( "Demo start ..." , 4 , '=' );  nlm(2);
+    // ==== DEMO START ==================================================================
 	
 	
 	
-	printf( "____ ... Demo end. ____\n\n" );
+    // ____ DEMO END ____________________________________________________________________
+    title_card( "... Demo end." , 4 , '_' );  nlm(2);
 }
