@@ -11,16 +11,24 @@ void deconstruct_float( float arg ){
 	// Deconstruct and learn about floating point numbers
 	
 	unsigned int f    = *(unsigned int*)&arg; // Get addr, recast deref
+    /* NOTE: ^^^-- This trick not needed for Data Lab, --^^^ 
+                   because args are already of type unsigned int */
+    
+    // Fetch the constituent parts of the float and store them as ints
 	unsigned int sign = ( f >> 31 ) & 1; // ------ sign is 1st bit
 	unsigned int exp  = ( f >> 23 ) & 0xFF; // --- exp is next 8 bits
 	unsigned int frac =   f         & 0x7fffff; // frac is next 23 bits
+    
+    // Construct the Exponent and Significand (Mantissa)
 	int 		 bias = 127;
 	int          E    = exp > 0 ? (int)exp - bias : 1 - bias ;
 	float        M    = 0.0f;
 	
+    // Print the values of each piece
 	printf( "float: %f , s: %u , exp: %u , E: %i , frac: %u \n" ,
 			 arg       , sign  , exp     , E     , frac );
-			 
+	
+    // Reconstruct the number from the IEEE standard pieces
 	// If number is neither NaN no infinity, interpret it in decimal
 	if( !( isnan( arg ) || isinf( arg ) ) ){
 		printf( "frac: " );
