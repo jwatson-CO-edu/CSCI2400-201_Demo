@@ -66,6 +66,10 @@ We're going to set a *breakpoint* in function `main` and run the program again:
 ```
 (gdb) break main
 Breakpoint 1 at 0x40069a: file gdb-tutorial.c, line 11.
+
+(gdb) tui enable
+This will turn on the Terminal User Interface, making it easier to navigate while debugging
+
 (gdb) run
 The program being debugged has been started already.
 Start it from the beginning? (y or n) y

@@ -1,0 +1,112 @@
+
+bomb:     file format elf64-x86-64
+
+SYMBOL TABLE:
+0000000000000238 l    d  .interp	0000000000000000              .interp
+0000000000000254 l    d  .note.ABI-tag	0000000000000000              .note.ABI-tag
+0000000000000274 l    d  .note.gnu.build-id	0000000000000000              .note.gnu.build-id
+0000000000000298 l    d  .gnu.hash	0000000000000000              .gnu.hash
+00000000000002c0 l    d  .dynsym	0000000000000000              .dynsym
+0000000000000548 l    d  .dynstr	0000000000000000              .dynstr
+0000000000000656 l    d  .gnu.version	0000000000000000              .gnu.version
+0000000000000690 l    d  .gnu.version_r	0000000000000000              .gnu.version_r
+00000000000006c0 l    d  .rela.dyn	0000000000000000              .rela.dyn
+0000000000000798 l    d  .rela.plt	0000000000000000              .rela.plt
+0000000000000978 l    d  .init	0000000000000000              .init
+0000000000000990 l    d  .plt	0000000000000000              .plt
+0000000000000ae0 l    d  .plt.got	0000000000000000              .plt.got
+0000000000000af0 l    d  .text	0000000000000000              .text
+0000000000001100 l    d  .fini	0000000000000000              .fini
+0000000000001120 l    d  .rodata	0000000000000000              .rodata
+000000000000153c l    d  .eh_frame_hdr	0000000000000000              .eh_frame_hdr
+00000000000015d0 l    d  .eh_frame	0000000000000000              .eh_frame
+0000000000201d20 l    d  .init_array	0000000000000000              .init_array
+0000000000201d28 l    d  .fini_array	0000000000000000              .fini_array
+0000000000201d30 l    d  .dynamic	0000000000000000              .dynamic
+0000000000201f20 l    d  .got	0000000000000000              .got
+0000000000202000 l    d  .data	0000000000000000              .data
+0000000000202020 l    d  .bss	0000000000000000              .bss
+0000000000000000 l    d  .comment	0000000000000000              .comment
+0000000000000000 l    d  .debug_aranges	0000000000000000              .debug_aranges
+0000000000000000 l    d  .debug_info	0000000000000000              .debug_info
+0000000000000000 l    d  .debug_abbrev	0000000000000000              .debug_abbrev
+0000000000000000 l    d  .debug_line	0000000000000000              .debug_line
+0000000000000000 l    d  .debug_str	0000000000000000              .debug_str
+0000000000000000 l    df *ABS*	0000000000000000              crtstuff.c
+0000000000000b20 l     F .text	0000000000000000              deregister_tm_clones
+0000000000000b60 l     F .text	0000000000000000              register_tm_clones
+0000000000000bb0 l     F .text	0000000000000000              __do_global_dtors_aux
+0000000000202028 l     O .bss	0000000000000001              completed.7698
+0000000000201d28 l     O .fini_array	0000000000000000              __do_global_dtors_aux_fini_array_entry
+0000000000000bf0 l     F .text	0000000000000000              frame_dummy
+0000000000201d20 l     O .init_array	0000000000000000              __frame_dummy_init_array_entry
+0000000000000000 l    df *ABS*	0000000000000000              MiniBomb_mk1.c
+0000000000000000 l    df *ABS*	0000000000000000              crtstuff.c
+000000000000182c l     O .eh_frame	0000000000000000              __FRAME_END__
+0000000000000000 l    df *ABS*	0000000000000000              
+00000000000010f0 l     F .text	0000000000000010              stat
+0000000000201d28 l       .init_array	0000000000000000              __init_array_end
+0000000000201d30 l     O .dynamic	0000000000000000              _DYNAMIC
+0000000000201d20 l       .init_array	0000000000000000              __init_array_start
+000000000000153c l       .eh_frame_hdr	0000000000000000              __GNU_EH_FRAME_HDR
+0000000000201f20 l     O .got	0000000000000000              _GLOBAL_OFFSET_TABLE_
+00000000000010e0 g     F .text	0000000000000002              __libc_csu_fini
+0000000000000dc1 g     F .text	0000000000000013              print_greeting
+0000000000202038 g     O .bss	0000000000000008              len
+00000000000010f0 g     F .text	0000000000000010              .hidden __stat
+0000000000000000       F *UND*	0000000000000000              __errno_location@@GLIBC_2.2.5
+0000000000000000  w      *UND*	0000000000000000              _ITM_deregisterTMCloneTable
+0000000000202000  w      .data	0000000000000000              data_start
+0000000000000d03 g     F .text	0000000000000058              file_exists
+0000000000000000       F *UND*	0000000000000000              puts@@GLIBC_2.2.5
+0000000000202040 g     O .bss	0000000000000100              outMsg
+0000000000202140 g     O .bss	0000000000000008              c_time_string
+0000000000000c40 g     F .text	0000000000000045              Open
+0000000000000000       F *UND*	0000000000000000              write@@GLIBC_2.2.5
+0000000000202010 g       .data	0000000000000000              _edata
+0000000000000000       F *UND*	0000000000000000              ctime@@GLIBC_2.2.5
+0000000000001100 g     F .fini	0000000000000000              _fini
+0000000000000000       F *UND*	0000000000000000              strlen@@GLIBC_2.2.5
+0000000000000000       F *UND*	0000000000000000              __stack_chk_fail@@GLIBC_2.4
+0000000000000d5b g     F .text	0000000000000066              create_or_append_for_writing
+0000000000000000       F *UND*	0000000000000000              printf@@GLIBC_2.2.5
+0000000000001240 g     O .rodata	0000000000000100              FNAME
+0000000000000000       F *UND*	0000000000000000              close@@GLIBC_2.2.5
+0000000000000000       F *UND*	0000000000000000              __libc_start_main@@GLIBC_2.2.5
+0000000000000eb7 g     F .text	000000000000004f              explode_bomb
+0000000000202000 g       .data	0000000000000000              __data_start
+0000000000202148 g     O .bss	0000000000000008              current_time
+0000000000000000       F *UND*	0000000000000000              fprintf@@GLIBC_2.2.5
+0000000000000000  w      *UND*	0000000000000000              __gmon_start__
+0000000000000000       F *UND*	0000000000000000              umask@@GLIBC_2.2.5
+0000000000000cb2 g     F .text	0000000000000051              WriteStr
+0000000000001140 g     O .rodata	0000000000000100              GREETING
+0000000000202008 g     O .data	0000000000000000              .hidden __dso_handle
+0000000000001120 g     O .rodata	0000000000000004              _IO_stdin_used
+0000000000000000       F *UND*	0000000000000000              time@@GLIBC_2.2.5
+0000000000000000       F *UND*	0000000000000000              __xstat@@GLIBC_2.2.5
+0000000000001070 g     F .text	0000000000000065              __libc_csu_init
+0000000000000bfa g     F .text	0000000000000046              unix_error
+0000000000202150 g       .bss	0000000000000000              _end
+0000000000000af0 g     F .text	000000000000002b              _start
+0000000000202010 g       .bss	0000000000000000              __bss_start
+0000000000000f4f g     F .text	0000000000000118              main
+0000000000000000       F *UND*	0000000000000000              open@@GLIBC_2.2.5
+0000000000000f06 g     F .text	0000000000000049              secret_sequence
+0000000000000dd4 g     F .text	00000000000000e3              populate_time_str
+0000000000000000       F *UND*	0000000000000000              fopen@@GLIBC_2.2.5
+0000000000000c85 g     F .text	000000000000002d              Close
+0000000000202030 g     O .bss	0000000000000008              line
+0000000000000000       F *UND*	0000000000000000              atoi@@GLIBC_2.2.5
+0000000000000000       F *UND*	0000000000000000              getline@@GLIBC_2.2.5
+0000000000000000       F *UND*	0000000000000000              sprintf@@GLIBC_2.2.5
+0000000000000000       F *UND*	0000000000000000              exit@@GLIBC_2.2.5
+0000000000000000       F *UND*	0000000000000000              fwrite@@GLIBC_2.2.5
+0000000000202010 g     O .data	0000000000000000              .hidden __TMC_END__
+0000000000000000  w      *UND*	0000000000000000              _ITM_registerTMCloneTable
+0000000000000000       F *UND*	0000000000000000              strerror@@GLIBC_2.2.5
+0000000000000000  w    F *UND*	0000000000000000              __cxa_finalize@@GLIBC_2.2.5
+0000000000000978 g     F .init	0000000000000000              _init
+0000000000202020 g     O .bss	0000000000000008              stderr@@GLIBC_2.2.5
+
+

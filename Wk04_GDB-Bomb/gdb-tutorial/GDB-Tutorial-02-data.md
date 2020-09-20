@@ -62,6 +62,11 @@ Notice that output values are of the form `$N = <value>` for some constant `N`. 
 (gdb) print $7 * $8
 $11 = 30
 (gdb)
+
+This is different from mathematical expressions
+(gdb) print 7 * 8
+$12 = 56
+(gdb)
 ```
 We'll see that these number variables are pretty useful later on when we need to "write down" long memory addresses and pointer values.
 
