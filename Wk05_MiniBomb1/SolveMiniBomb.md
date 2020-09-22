@@ -55,7 +55,9 @@ Ooops, we have our first explosion. We want to avoid this in the future. Now tak
 
 1. We can view where we are in the assembly code using one of GDB's default layouts.  
 `layout asm`  
-Arrow keys navigate.
+Arrow keys navigate.  
+`focus cmd` : Arrow keys scroll through command history  
+`focus asm` : Arrow keys scroll ASM code again
 
 1. Or, if you like, you can keep an eye on ther registers and the asm code at the same time.  
 `layout regs`  
@@ -63,3 +65,23 @@ Arrow keys navigate.
 1. "Next Instruction" until we see something interesting.  
 `ni`  
 Remember that pressing enter repeats the previous command.
+
+1. Okay, we get the idea that `secret_sequence` may interest us.  Quit GDB and save the code for that function in a file.  
+`quit`  
+`objdump --disassemble=secret_sequence bomb | tee secret.asm`  
+if you have `objdump` version 2.34 or greater (`objdump --version`), otherwise  
+`objdump -D bomb | grep secret_sequence.: -A40 | tee secret.asm
+`  
+Where the number after `A` is the number of lines to print after the beginning of the function.  
+Now you can have this function open in a separate window, if you like.
+
+1. However, it's quite annoying to have to set up everything just how we like it every time we start GDB. This is what config files are for.  You can populate a config file with all the commands you would normally run as soon as you enter GDB.  
+*[Take a look at &nbsp;`phase1.gdb`]*
+
+1. We can restart GDB, giving it this file as an argument. GDB starts off behaving as though we typed out everything in the file.  
+`gdb -x phase1.gdb bomb`
+
+## Further Investiation
+
+1. Let's manually trace `secret_sequence` to see what's up.  
+*[Take a look at &nbsp;`secret_NOTES.asm`]*
