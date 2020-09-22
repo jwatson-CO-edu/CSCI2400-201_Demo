@@ -39,7 +39,7 @@ void unix_error( char *msg ){
     /* Print a message and crash the program 
        Credit: Bryant & O'Hallaron */
     fprintf( stderr , "%s: %s\n" , msg , strerror( errno ) );
-    exit( 0 );
+    exit( 1 );
 }
 
 int Open( const char* pathname , int flags , mode_t mode ){
@@ -97,7 +97,6 @@ void populate_time_str( char* inStr ){
     /* Obtain current time. 
        Credit: https://en.wikipedia.org/wiki/C_date_and_time_functions */
     
-    printf( "About to read time...\n" );
     current_time = time( NULL );
 
     if( current_time == ( ( time_t ) -1 ) ){
@@ -106,7 +105,6 @@ void populate_time_str( char* inStr ){
     }
 
     /* Convert to local time format. */
-    printf( "About to convert...\n" );
     c_time_string = ctime( &current_time );
 
     if( c_time_string == NULL ){
@@ -114,7 +112,6 @@ void populate_time_str( char* inStr ){
         exit( EXIT_FAILURE );
     }
 
-    printf( "About to fill in the string...\n" );
     /* Print to stdout. ctime() has already added a terminating newline character. */
     sprintf( inStr , "Recorded an explosion at %s" , c_time_string );
 }
@@ -122,9 +119,7 @@ void populate_time_str( char* inStr ){
 void explode_bomb( int recordHandle ){
     // Record the time and date of explosition in an already-opened file
     printf( "Bomb EXPLODED! ... Please try again.\n" );
-    printf( "About to populate...\n" );
     populate_time_str( outMsg );
-    printf( "About to write...\n" );
     WriteStr( recordHandle , outMsg );
 }
 
