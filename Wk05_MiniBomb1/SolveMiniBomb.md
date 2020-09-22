@@ -85,3 +85,23 @@ Now you can have this function open in a separate window, if you like.
 
 1. Let's manually trace `secret_sequence` to see what's up.  
 *[Take a look at &nbsp;`secret_NOTES.asm`]*
+
+1. Back to GDB, we are in main, from our look at `secret_sequence`, we see that the stack memory at `-0x14(%rbp)` and `-0x4(%rbp)` is modified several times throughout the function execution.  Let's keep tabs on those numbers.  
+`display *((int *)($rbp-0x14))`  
+"At every step, interpret the quantity (base pointer - 0x14) as a pointer to an int, then dereference that pointer (Display the value at that address)"  
+`display *((int *)($rbp-0x4))`  
+Note that we did not have to interpret this as an `int`, (it may not be!), but it's a good first guess.
+
+1. The compiler also seems to be using the return register %eax/%rax as a holding spot for the calculation in progress, this is common.  %edx/%rdx is also being used
+`display $rax`
+`display $rdx`
+
+1. You can look at all the running displays you have with  
+`info display`  
+and you can stop a running display with
+`undisplay # #`, with `#` being one or more numbers separated by spaces, associated with the displays given by `info display`
+
+1. We finished our investigation of `secret_sequence` and execution is passed back to `main`.  After a few more `ni` we can see that it compares the return value of `secret_sequence` to the value 6.  If it is NOT equal to 6, some moves and prints happen, then - `explode_bomb`.  Let's not do that.
+
+1. We conclude that we must supply a value in the first line of our text file that is the first element of a 6-element Collatz sequence: https://en.wikipedia.org/wiki/Collatz_conjecture.  Quit GDB now, change the input file to the correct number, then run again.
+
