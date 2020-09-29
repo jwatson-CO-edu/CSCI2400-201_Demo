@@ -10,17 +10,17 @@
  69e:	48 98                	cltq   # Sign-extend $eax to fill $rax
  6a0:	48 c1 e0 04          	shl    $0x4,%rax # Left-shift $rax by 4
  6a4:	48 89 c2             	mov    %rax,%rdx # Copy $rax to $rdx
- 6a7:	48 8d 05 92 09 20 00 	lea    0x200992(%rip),%rax        # 201040 <items>
- 6ae:	8b 04 02             	mov    (%rdx,%rax,1),%eax
- 6b1:	89 c6                	mov    %eax,%esi
- 6b3:	48 8d 3d ca 01 00 00 	lea    0x1ca(%rip),%rdi        # 884 <_IO_stdin_used+0x4>
- 6ba:	b8 00 00 00 00       	mov    $0x0,%eax
- 6bf:	e8 9c fe ff ff       	callq  560 <printf@plt>
- 6c4:	83 45 fc 01          	addl   $0x1,-0x4(%rbp)
+ 6a7:	48 8d 05 92 09 20 00 	lea    0x200992(%rip),%rax # Add 0x200992 to ProgCountr -> $rax # 201040 <items>
+ 6ae:	8b 04 02             	mov    (%rdx,%rax,1),%eax # $rdx + $rax * 1 --to-> $eax
+ 6b1:	89 c6                	mov    %eax,%esi # Move $eax --to-> $esi
+ 6b3:	48 8d 3d ca 01 00 00 	lea    0x1ca(%rip),%rdi # Add 458 + ProgCountr --> $rdi # 884 <_IO_stdin_used+0x4>
+ 6ba:	b8 00 00 00 00       	mov    $0x0,%eax # 0 --to-> $eax
+ 6bf:	e8 9c fe ff ff       	callq  560 <printf@plt>  # Print
+ 6c4:	83 45 fc 01          	addl   $0x1,-0x4(%rbp) # Add 1 to Loc 1 (Loc 1 is a counter)
  6c8:	83 7d fc 03          	cmpl   $0x3,-0x4(%rbp) # >>> A <<<: Compare Loc 1 and 3
  6cc:	7e cd                	jle    69b <driver_1+0x11> # If Loc 1 <= 3, then ^^^- GOTO B -^^^
- 6ce:	bf 0a 00 00 00       	mov    $0xa,%edi 
- 6d3:	e8 78 fe ff ff       	callq  550 <putchar@plt>
- 6d8:	b8 00 00 00 00       	mov    $0x0,%eax
+ 6ce:	bf 0a 00 00 00       	mov    $0xa,%edi # 0 --to-> $edi
+ 6d3:	e8 78 fe ff ff       	callq  550 <putchar@plt> # Call putchar
+ 6d8:	b8 00 00 00 00       	mov    $0x0,%eax # 0 --to-> $eax
  6dd:	c9                   	leaveq 
  6de:	c3                   	retq   
