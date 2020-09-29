@@ -1,5 +1,5 @@
 0000000000000f06 <secret_sequence>:
-     f06:	55                   	push   %rbp
+     f06:	55                   	push   %rbp # add a stack frame
      f07:	48 89 e5             	mov    %rsp,%rbp
      f0a:	89 7d ec             	mov    %edi,-0x14(%rbp)
      f0d:	c7 45 fc 01 00 00 00 	movl   $0x1,-0x4(%rbp)

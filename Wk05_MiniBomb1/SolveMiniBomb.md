@@ -5,7 +5,8 @@
     * `-std=c99` : Specific version of C to use, https://en.wikipedia.org/wiki/C99
     * `-O0` : Optimization level 0, NO optimization
     * `-o` : Name the resulting executable file
-    * NOT USED `-g` : Debug info, preserves code within the executable to allow you to relate trace program behavior through code.
+    * NOT USED `-g` : Debug info, preserves code within the executable to allow you to trace program behavior through code. (This would make Lab 2 trivial.)
+    * NOT USED `-s` : Remove all readable symbol names from table. (This would make Lab 2 nearly impossible.)
 
 ## Preliminary information gathering
 

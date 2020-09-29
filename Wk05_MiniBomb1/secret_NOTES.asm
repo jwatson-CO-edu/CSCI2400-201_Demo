@@ -2,6 +2,7 @@
      # Creat a new stack frame
      f06:	55                   	push   %rbp # Push the base pointer onto the stack (Dyn Stack Alloc)
      f07:	48 89 e5             	mov    %rsp,%rbp # Move the stack pointer to the base pointer
+     
      # `break secret_squence` will start you at the following instruction
      f0a:	89 7d ec             	mov    %edi,-0x14(%rbp) # Move argument (val 3) into the stack frame, Loc 1
      f0d:	c7 45 fc 01 00 00 00 	movl   $0x1,-0x4(%rbp) # Move the number 1 into the stack frame, Loc 2
