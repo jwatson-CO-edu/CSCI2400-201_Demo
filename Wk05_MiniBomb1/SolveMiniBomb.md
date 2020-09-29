@@ -71,8 +71,7 @@ Remember that pressing enter repeats the previous command.
 `quit`  
 `objdump --disassemble=secret_sequence bomb | tee secret.asm`  
 if you have `objdump` version 2.34 or greater (`objdump --version`), otherwise  
-`objdump -D bomb | grep secret_sequence.: -A40 | tee secret.asm
-`  
+`objdump -D bomb | grep secret_sequence.: -A40 | tee secret.asm`  
 Where the number after `A` is the number of lines to print after the beginning of the function.  
 Now you can have this function open in a separate window, if you like.
 
