@@ -79,22 +79,14 @@ void MM_2( double op1[ARR_SIZE][ARR_SIZE] , double op2[ARR_SIZE][ARR_SIZE] , dou
     }
 }
 
-/*** Optimization 3: 10-way Loop Unrolling ***/
+/*** Optimization 3: 2-way Loop Unrolling ***/
 
 void MM_3( double op1[ARR_SIZE][ARR_SIZE] , double op2[ARR_SIZE][ARR_SIZE] , double res[ARR_SIZE][ARR_SIZE] ){
     for( size_t i = 0 ; i < ARR_SIZE ; i++ ){
         for( size_t k = 0 ; k < ARR_SIZE ; k++ ){
-            for( size_t j = 0 ; j < ARR_SIZE ; j+=10 ){
-                res[i][j+0] = res[i][j+0] + op1[i][k] * op2[k][j+0];
-                res[i][j+1] = res[i][j+1] + op1[i][k] * op2[k][j+1];
-                res[i][j+2] = res[i][j+2] + op1[i][k] * op2[k][j+2];
-                res[i][j+3] = res[i][j+3] + op1[i][k] * op2[k][j+3];
-                res[i][j+4] = res[i][j+4] + op1[i][k] * op2[k][j+4];
-                res[i][j+5] = res[i][j+5] + op1[i][k] * op2[k][j+5];
-                res[i][j+6] = res[i][j+6] + op1[i][k] * op2[k][j+6];
-                res[i][j+7] = res[i][j+7] + op1[i][k] * op2[k][j+7];
-                res[i][j+8] = res[i][j+8] + op1[i][k] * op2[k][j+8];
-                res[i][j+9] = res[i][j+9] + op1[i][k] * op2[k][j+9];
+            for( size_t j = 0 ; j < ARR_SIZE ; j+=2 ){
+                res[i][j+0] += res[i][j+0] + op1[i][k] * op2[k][j+0];
+                res[i][j+1] += res[i][j+1] + op1[i][k] * op2[k][j+1];
             }
         }
     }
@@ -107,17 +99,8 @@ void MM_4( double op1[ARR_SIZE][ARR_SIZE] , double op2[ARR_SIZE][ARR_SIZE] , dou
     for( size_t i = 0 ; i < ARR_SIZE ; i++ ){
         for( size_t k = 0 ; k < ARR_SIZE ; k++ ){
             op1_ik = op1[i][k];
-            for( size_t j = 0 ; j < ARR_SIZE ; j+=10 ){
-                res[i][j+0] = op1_ik * op2[k][j+0];
-                res[i][j+1] = op1_ik * op2[k][j+1];
-                res[i][j+2] = op1_ik * op2[k][j+2];
-                res[i][j+3] = op1_ik * op2[k][j+3];
-                res[i][j+4] = op1_ik * op2[k][j+4];
-                res[i][j+5] = op1_ik * op2[k][j+5];
-                res[i][j+6] = op1_ik * op2[k][j+6];
-                res[i][j+7] = op1_ik * op2[k][j+7];
-                res[i][j+8] = op1_ik * op2[k][j+8];
-                res[i][j+9] = op1_ik * op2[k][j+9];
+            for( size_t j = 0 ; j < ARR_SIZE ; j+=1 ){
+                res[i][j+0] += op1_ik * op2[k][j];
             }
         }
     }
@@ -134,17 +117,8 @@ void MM_5( double op1[ARR_SIZE][ARR_SIZE] , double op2[ARR_SIZE][ARR_SIZE] , dou
         for( size_t k = 0 ; k < ARR_SIZE ; k++ ){
             op1_ik = op1[i][k];
             op2_k  = op2[k];
-            for( size_t j = 0 ; j < ARR_SIZE ; j+=10 ){
-                res_i[j+0] = op1_ik * op2_k[j+0];
-                res_i[j+1] = op1_ik * op2_k[j+1];
-                res_i[j+2] = op1_ik * op2_k[j+2];
-                res_i[j+3] = op1_ik * op2_k[j+3];
-                res_i[j+4] = op1_ik * op2_k[j+4];
-                res_i[j+5] = op1_ik * op2_k[j+5];
-                res_i[j+6] = op1_ik * op2_k[j+6];
-                res_i[j+7] = op1_ik * op2_k[j+7];
-                res_i[j+8] = op1_ik * op2_k[j+8];
-                res_i[j+9] = op1_ik * op2_k[j+9];
+            for( size_t j = 0 ; j < ARR_SIZE ; j+=1 ){
+                res_i[j+0] += op1_ik * op2_k[j];
             }
         }
     }
@@ -199,7 +173,7 @@ cout << testName << " took " << elapsed << " seconds." << endl;
 set_2D_array_zero( C ); // Reset array C
 
 /***** TEST 3 *****/
-testName = "10-Way Loop Unrolling";
+testName = "2-Way Loop Unrolling";
 
 time_elapsed( clk ); // Init clock
 
@@ -235,6 +209,7 @@ bool isDiff = !arr2D_same( orig_res , C );
 cout << endl << "Does the optimized function produced the same result as the un-optimized one?: " << yes_no( !isDiff ) << "!" << endl;
 if( isDiff ){
     cout << "Largest per-element difference between `MM_1` and `MM_5`: " << arr2D_max_diff( orig_res , C ) << endl;
+    cout << orig_res[0][0] << " , " << C[0][0] << endl;
 }
 
 //// DEMO END ///////////////////////////////////////////////////////////////////////////////////////////////
