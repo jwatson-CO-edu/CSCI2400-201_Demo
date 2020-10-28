@@ -84,8 +84,8 @@ void MM_3( double op1[ARR_SIZE][ARR_SIZE] , double op2[ARR_SIZE][ARR_SIZE] , dou
     for( size_t i = 0 ; i < ARR_SIZE ; i++ ){
         for( size_t k = 0 ; k < ARR_SIZE ; k++ ){
             for( size_t j = 0 ; j < ARR_SIZE ; j+=2 ){
-                res[i][j+0] += res[i][j+0] + op1[i][k] * op2[k][j+0];
-                res[i][j+1] += res[i][j+1] + op1[i][k] * op2[k][j+1];
+                res[i][j+0] += op1[i][k] * op2[k][j+0];
+                res[i][j+1] += op1[i][k] * op2[k][j+1];
             }
         }
     }
