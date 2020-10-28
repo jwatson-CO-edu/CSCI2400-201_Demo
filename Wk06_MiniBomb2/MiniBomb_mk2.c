@@ -56,7 +56,7 @@ int main( int argc , char* argv[] ){ // Main takes the terminal command and flag
 	
 // Assign data in increasing order with array index
 for( int i = 0 ; i < N_ELEM ; i++ ){
-    items[i].data = i+1;
+    items[i].data = (i+1)*2;
     items[i].next = NULL;
 }
 

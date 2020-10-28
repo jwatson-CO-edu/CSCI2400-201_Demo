@@ -60,7 +60,6 @@ void MM_1( double op1[ARR_SIZE][ARR_SIZE] , double op2[ARR_SIZE][ARR_SIZE] , dou
     for( size_t i = 0 ; i < ARR_SIZE ; i++ ){
         for( size_t j = 0 ; j < ARR_SIZE ; j++ ){
             for( size_t k = 0 ; k < ARR_SIZE ; k++ ){
-                // We will modify `res[i][j]` k times!
                 res[i][j] = res[i][j] + op1[i][k] * op2[k][j];
             }
         }
