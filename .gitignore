@@ -62,3 +62,5 @@ Wk06_MiniBomb2/.ipynb_checkpoints/
 Wk10_Optimization/.ipynb_checkpoints/
 .vscode
 .vscode/*
+*/build
+*/out
