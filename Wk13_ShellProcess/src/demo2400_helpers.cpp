@@ -113,3 +113,24 @@ vector<string> split( string s , char sep ){
     }
     return rtnVec;
 }
+
+vector<string> list_path( string path ){
+    // List all the files in a directory
+    // https://stackoverflow.com/a/37494654
+    vector<string> rtnVec;
+    for( const auto& entry : fs::directory_iterator( path ) ){  rtnVec.push_back( entry.path().string() );  }
+    return rtnVec;
+}
+
+bool has_substr( string& superStr , string& subStr ){
+    // Return true if `superStr` containst `subStr`, otherwise return false
+    std::size_t found = superStr.find( subStr );
+    return found != string::npos;
+}
+
+void print_args( int c, char *v[] ){
+    cout << "print_args! " << c << endl;
+    for( int i = 0 ; i < c ; i++ ){  
+        cout << *(v[i]) << ( i+1 >= c ? "\n" : ", " );  
+    }
+}

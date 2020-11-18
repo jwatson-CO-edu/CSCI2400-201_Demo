@@ -34,24 +34,32 @@ message( "\n\nBuilding..." )
 
 set( EXEC_NAME Process1 )
 add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
-message( "Finished building ${EXEC_NAME}!" )
+message( "${EXEC_NAME} ready!" )
 
 set( EXEC_NAME Process2 )
 add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
-message( "Finished building ${EXEC_NAME}!" )
+message( "${EXEC_NAME} ready!" )
 
 set( EXEC_NAME infty1 )
 add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
-message( "Finished building ${EXEC_NAME}!" )
+message( "${EXEC_NAME} ready!" )
 
 set( EXEC_NAME Process3 )
 add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
-message( "Finished building ${EXEC_NAME}!" )
+message( "${EXEC_NAME} ready!" )
 
 set( EXEC_NAME MicroShell )
 add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
-message( "Finished building ${EXEC_NAME}!" )
+message( "${EXEC_NAME} ready!" )
 
-set( EXEC_NAME infty2 )
+set( EXEC_NAME u_echo )
 add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
-message( "Finished building ${EXEC_NAME}!" )
+message( "${EXEC_NAME} ready!" )
+
+set( EXEC_NAME u_add )
+add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
+message( "${EXEC_NAME} ready!" )
+
+set( EXEC_NAME u_grid )
+add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
+message( "${EXEC_NAME} ready!" )

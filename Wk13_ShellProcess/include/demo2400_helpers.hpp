@@ -21,6 +21,9 @@ Helper functions for CSCI 2400 @ CU Boulder
 #include <sstream> // -- Text streams    
 #include <vector>  
 #include <sys/stat.h> 
+#include <filesystem> 
+
+namespace fs = std::filesystem;
 
 typedef  std::chrono::steady_clock::time_point  StdTime;
 typedef  std::chrono::steady_clock              StdClock;
@@ -61,6 +64,12 @@ bool check_exist( string path , string check );
 
 vector<string> split( string s , char sep );
 
+vector<string> list_path( string path );
+
+bool has_substr( string& superStr , string& subStr );
+
+void print_args( int argc, char *argv[] );
+
 template<typename T> // NOTE: Templated functions must have their definition in the header file
 ostream& operator<<( ostream& os , const std::vector<T>& vec ) { // ostream '<<' operator for vectors
     // NOTE: This function assumes that the ostream '<<' operator for T has already been defined
@@ -71,6 +80,15 @@ ostream& operator<<( ostream& os , const std::vector<T>& vec ) { // ostream '<<'
     }
     os << " ]";
     return os; // You must return a reference to the stream!
+}
+
+template<typename T> // NOTE: Templated functions must have their definition in the header file
+bool is_arg_in_vector( T arg , const std::vector<T>& vec ){
+    // Return true if 'arg' is in 'st' , false otherwise
+    // URL , resolve dependent templated typenames: https://stackoverflow.com/a/11275548
+    // URL , const_iterator: https://stackoverflow.com/a/309589
+    typename std::vector<T>::const_iterator it = find( vec.begin() , vec.end() , arg ); 
+    return it != vec.end();
 }
 
 /// END ///////////////////////////////////////////////////////////////////////////////////////////////////////////

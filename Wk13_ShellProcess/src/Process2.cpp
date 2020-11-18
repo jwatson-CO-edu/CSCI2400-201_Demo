@@ -16,8 +16,7 @@ void incr_vec( vector<u_char>& arr ){
 int main(){ 
 
 	pid_t frkResult  , 
-	      i      = 0 ,
-		  waitID = 0 ; 
+	      i      = 0 ; 
 	// NOTE: `pid_t` is an alias for `int`: `typedef int pid_t;
 	
 	// 1. While the first element is less than 4
