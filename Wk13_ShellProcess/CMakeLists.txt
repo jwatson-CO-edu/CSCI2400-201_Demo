@@ -3,7 +3,7 @@
 # 1. Setup: Declare min CMake version, name of the project, and compiler settings
 cmake_minimum_required( VERSION 3.0 )
 project( wk13 )
-set ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Wall" ) # Use C++17
+set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Wall" ) # Use C++17
 # NOTE: CMake function calls do NOT have commas between arguments!
 
 # 2. Set paths to look for headers and sources in the project
@@ -48,6 +48,6 @@ set( EXEC_NAME Process3 )
 add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
 message( "Finished building ${EXEC_NAME}!" )
 
-set( EXEC_NAME MicroShell )
-add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
-message( "Finished building ${EXEC_NAME}!" )
+# set( EXEC_NAME MicroShell )
+# add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
+# message( "Finished building ${EXEC_NAME}!" )

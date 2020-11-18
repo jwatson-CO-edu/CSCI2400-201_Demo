@@ -23,14 +23,13 @@ int main(){
 		frkResult = fork();
 		cout << "Iteration " << i << ": fork() returned: " << frkResult << ", ";
 		if( frkResult ){
-			cout << "Original process, exiting ... " << vec << endl << endl;;
-			break;
+			cout << "Original process, exiting ... " << vec << endl << endl;
+            exit(0);
 		}else{
 			cout << "New process, incrementing ... ";
 			incr_vec( vec );
 			cout << vec << endl << endl;
 		}
 	}
-	
-	return 0; 
+	exit(0);
 } 
