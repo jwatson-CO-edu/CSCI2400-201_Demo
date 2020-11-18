@@ -48,6 +48,10 @@ set( EXEC_NAME Process3 )
 add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
 message( "Finished building ${EXEC_NAME}!" )
 
-# set( EXEC_NAME MicroShell )
-# add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
-# message( "Finished building ${EXEC_NAME}!" )
+set( EXEC_NAME MicroShell )
+add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
+message( "Finished building ${EXEC_NAME}!" )
+
+set( EXEC_NAME infty2 )
+add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
+message( "Finished building ${EXEC_NAME}!" )

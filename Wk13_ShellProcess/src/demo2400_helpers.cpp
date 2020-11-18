@@ -97,24 +97,19 @@ bool check_exist( string path , string check ){
 }
 
 vector<string> split( string s , char sep ){
-    int len = s.length(); // Length of input string
     vector<string> rtnVec;
-    string currWord; // ---------- Current word between separators
-    s += sep; // Delimiter termination hack
-    cout << "About to split" << endl;
+    string currWord; // ------------- Current word between separators
+    s.append( string( 1 , sep ) ); // Delimiter termination hack
+    int len = s.length(); // -------- Length of input string
+    // For each char in the string
     for( int i = 0 ; i < len ; i++ ){
         if( s[i] != sep ){ // If not separator, accumulate char to `currWord`
             currWord += s[i];
         }else{ // else is separator, 
-            // add word if we accumulated one and there is space for it
-            if( currWord.length() > 0 ){
-                rtnVec.push_back( currWord ) ; // Assign word to array
-            }
-            cout << currWord << endl;
+            // add word if we accumulated one
+            if( currWord.length() > 0 ){  rtnVec.push_back( currWord );  } // Assign word to array
             currWord = "";
         }
     }
-    /* If words were found, then `arrDex` is always one more than the last 
-       index populated, else is zero. Thus we can use it for a word count! */
     return rtnVec;
 }

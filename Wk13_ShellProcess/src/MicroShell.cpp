@@ -12,29 +12,44 @@
 namespace fs = std::filesystem;
 using std::cin;
 
+pid_t procNum  = 0    , 
+      altGroup = 7777 ;
 
+// void process_killer( int signum ) {
+//    cout << endl << "SHELL signal (" << signum << ") received." << endl;
+
+//    if( procNum ){
+//        kill( procNum , signum );
+//    }else{
+//        exit( signum );
+//    }  
+// }
+
+void hup_handler( int signum ){
+    // pass
+}
 
 vector<string> parse( string prefix ){
     // Parse user input, Return a vector of strings
-    cin.clear(); // --------- Ignore all errors
-    cin.ignore( INT_MAX ); // Completely discard `cin` buffer
+    if( cin.fail() ){
+        cin.clear(); // --------- Ignore all errors
+        cin.ignore( INT_MAX ); // Completely discard `cin` buffer
+    }
+
     string userInput;
     vector<string> rtnVec;
     vector<string> errVec;
 
     // 1. Take input, If no error then ...
-    if( cin >> userInput ){
-
+    if( getline( cin , userInput ) ){
         // 2. Split the input and search for the program
         rtnVec = split( userInput , ' ' );
         string path = prefix + rtnVec[0];
-        
         // 3. Check for exit command
         if( userInput == "exit" ){
             cout << endl << "EXIT shell!" << endl;
             return errVec;
         }
-        
         // 4. Check that the program exists
         if( check_exist( path , "file" )  ){
             rtnVec[0] = path;
@@ -50,13 +65,30 @@ vector<string> parse( string prefix ){
 int main( int argc, char *argv[] ){
 
     // 0. Init
-    bool /*-----*/ running     = 1;
+    bool /*-----*/ running    = 1;
     string /*---*/ pathPrefix = "./out/";
     vector<string> input;
     char* /*----*/ cPath;
     char* /*----*/ childArgs[128];
     size_t /*---*/ N_args = 0;
-    pid_t /*----*/ procNum = 0;
+    pid_t /*----*/ myID   = getpid();
+
+    signal( SIGHUP , hup_handler );
+
+    cout << "Main PID: " << myID << endl;
+    if( 0 > setsid() )
+        cout << "Could NOT make this process session leader!" << endl;
+    else
+        cout << "Main process now LEADER of " << getsid( myID ) << endl;
+
+    
+    cout << "Started MicroShell as PID " << myID << ", part of " << getpgid( myID ) << " process group" << endl;
+
+    // if( 0 > setpgid( myID , altGroup ) )
+    // if( setpgid(getpid(), getpgid(getppid()) ) )
+    //     cout << "Could NOT change parent process group!" << endl;
+    // else
+    //     cout << "Parent now part of " << getpgid( myID ) << " process group" << endl;
 
     // 1. While the shell is active
     while( running ){
@@ -81,11 +113,24 @@ int main( int argc, char *argv[] ){
             if( procNum < 0 ){
                 cout << "Fork FAILED!" << endl;
                 running = 0;
-            // 9. If this is the parent (original) process, wait for the child to complete
+            // 9. If this is the parent (original) process, wait for the child to die
             }else if( procNum ){
+                cout << "Waiting .... " << endl;
                 waitpid( procNum , 0 , 0 );
+                procNum = 0;
+                cout << procNum << " died!" << endl;
             // 10. procNum == 0, this is the child process
             }else{
+
+                // setpgid( getpid() , childGroup );
+                // if( 0 > setpgid( getpid() , childGroup ) )
+                //     cout << "Could NOT change child process group!" << endl;
+
+                if( 0 > setpgid(getpid(), getpgid(getppid()) + 1 ) )
+                    cout << "Could NOT change child process group!" << endl;
+                else
+                    cout << "Child now part of " << getpgid( myID ) << " process group" << endl;
+                
                 // 11. Get the file path
                 cPath = (char*) input[0].c_str();
                 // 12. Load the arguments from the shell into a char* array
@@ -103,7 +148,6 @@ int main( int argc, char *argv[] ){
             }
         }
     }
-
 
     return 0;
 }

@@ -11,6 +11,10 @@ void signalHandler( int signum ) {
 
    cout << "PID " << getpid() << " says: Ouch, you have slain me!" << endl;
 
+//    kill( getppid() , signum );
+
+    kill(0, SIGHUP);
+
    exit( signum );  
 }
 
@@ -26,5 +30,7 @@ int main( int argc, char *argv[] ){
     while( 1 ){
         cout << '.' << flush;
         usleep( 1000 );
+        // break;
     }
+    return 0;
 }

@@ -34,6 +34,7 @@ using std::vector;
 using std::ostream;
 using std::flush;
 using std::vector;
+using std::getline;
 
 // print the binary representation of a uint
 void print_binary_int( unsigned int arg ); 
