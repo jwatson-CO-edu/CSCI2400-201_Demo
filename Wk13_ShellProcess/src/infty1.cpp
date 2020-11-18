@@ -4,12 +4,12 @@
 #include "demo2400_helpers.hpp"
 
 void signalHandler( int signum ) {
-   cout << "Interrupt signal (" << signum << ") received.\n";
+   cout << endl << "Interrupt signal (" << signum << ") received." << endl;
 
    // cleanup and close up stuff here  
    // terminate program  
 
-   cout << "PID " << getpid() << "says: Ouch, you have slain me!" << endl;
+   cout << "PID " << getpid() << " says: Ouch, you have slain me!" << endl;
 
    exit( signum );  
 }

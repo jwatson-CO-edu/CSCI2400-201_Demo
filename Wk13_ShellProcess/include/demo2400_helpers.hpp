@@ -19,7 +19,8 @@ Helper functions for CSCI 2400 @ CU Boulder
 #include <iostream> // - standard input and output , istream } Input / Output
 #include <fstream> // -- File I/O                           /
 #include <sstream> // -- Text streams    
-#include <vector>   
+#include <vector>  
+#include <sys/stat.h> 
 
 typedef  std::chrono::steady_clock::time_point  StdTime;
 typedef  std::chrono::steady_clock              StdClock;
@@ -32,6 +33,7 @@ using std::string;
 using std::vector;
 using std::ostream;
 using std::flush;
+using std::vector;
 
 // print the binary representation of a uint
 void print_binary_int( unsigned int arg ); 
@@ -53,6 +55,10 @@ void fill_array_rand( double arr[] , size_t len ); // Populate an array with ran
 string yes_no( bool expr ); // Return an affirmative string for true -or- a negative string for false
 
 ostream& operator<<( ostream& os , const std::vector<u_char>& vec );
+
+bool check_exist( string path , string check );
+
+vector<string> split( string s , char sep );
 
 template<typename T> // NOTE: Templated functions must have their definition in the header file
 ostream& operator<<( ostream& os , const std::vector<T>& vec ) { // ostream '<<' operator for vectors

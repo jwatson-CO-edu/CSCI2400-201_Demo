@@ -18,19 +18,19 @@ int main(){
 	      i = 0     ; 
 	// NOTE: `pid_t` is an alias for `int`: `typedef int pid_t;
 	
-	do{
+	while( vec[0] < 4 ){
 		i++;
 		frkResult = fork();
 		cout << "Iteration " << i << ": fork() returned: " << frkResult << ", ";
 		if( frkResult ){
+			cout << "Original process, exiting ... " << vec << endl << endl;;
+			break;
+		}else{
 			cout << "New process, incrementing ... ";
 			incr_vec( vec );
 			cout << vec << endl << endl;
-		}else{
-			cout << "Original process, exiting ... " << vec << endl << endl;;
-			break;
 		}
-	}while( vec[0] < 3*3 );
+	}
 	
 	return 0; 
 } 

@@ -79,3 +79,42 @@ ostream& operator<<( ostream& os , const std::vector<u_char>& vec ) { // ostream
     os << " ]";
     return os; // You must return a reference to the stream!
 }
+
+bool check_exist( string path , string check ){
+    // Use `stat` to check if something exists
+    struct stat buffer;   
+    bool /*- */ result;
+    stat( path.c_str() , &buffer );
+
+    if( check == "f" || check == "file" || check == "F" || check == "FILE" )
+        result = S_ISREG( buffer.st_mode );
+    else if( check == "d" || check == "directory" || check == "D" || check == "DIRECTORY" )
+        result =  S_ISDIR( buffer.st_mode );
+    else
+        result = false;
+
+    return result;
+}
+
+vector<string> split( string s , char sep ){
+    int len = s.length(); // Length of input string
+    vector<string> rtnVec;
+    string currWord; // ---------- Current word between separators
+    s += sep; // Delimiter termination hack
+    cout << "About to split" << endl;
+    for( int i = 0 ; i < len ; i++ ){
+        if( s[i] != sep ){ // If not separator, accumulate char to `currWord`
+            currWord += s[i];
+        }else{ // else is separator, 
+            // add word if we accumulated one and there is space for it
+            if( currWord.length() > 0 ){
+                rtnVec.push_back( currWord ) ; // Assign word to array
+            }
+            cout << currWord << endl;
+            currWord = "";
+        }
+    }
+    /* If words were found, then `arrDex` is always one more than the last 
+       index populated, else is zero. Thus we can use it for a word count! */
+    return rtnVec;
+}
