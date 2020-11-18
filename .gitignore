@@ -52,14 +52,10 @@ Mkfile.old
 dkms.conf
 
 # Custom Ignores
-Wk01_DataI/.ipynb_checkpoints/*
-Wk01_DataI/.ipynb_checkpoints
-Wk02_DataII/.ipynb_checkpoints/*
-Wk02_DataII/.ipynb_checkpoints
-Wk03_Floats/.ipynb_checkpoints
-Wk03_Floats/.ipynb_checkpoints/*
-Wk06_MiniBomb2/.ipynb_checkpoints/
-Wk10_Optimization/.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+*/.ipynb_checkpoints
+.ipynb_checkpoints/*
+.ipynb_checkpoints
 .vscode
 .vscode/*
 */build
