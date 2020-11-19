@@ -97,6 +97,7 @@ int main( int argc, char *argv[] ){
                 waitpid( procNum , 0 , 0 );
                 cout << endl << "Parent: Child " << procNum << " died!" << endl;
                 signal( SIGINT , shutdown_handler ); // Child died, reinstate the handler
+                
             // 10. procNum == 0, this is the child process
             }else{
                 cout << "Child process started as process " << getpid() 
@@ -104,24 +105,26 @@ int main( int argc, char *argv[] ){
                      << "Child Output:\t" << flush;
                 
                 // 11. Get the file path
-                cPath = (char*) input[0].c_str();
-                childArgs[0] = cPath;
+                cPath = (char*) input[0].c_str(); // First arg to `exec*` MUST be the path of the program to be run
+                childArgs[0] = cPath; // NOTE: First arg to child process MUST ASLO be file path 
+                
                 // 12. Load the arguments from the shell into a char* array
                 for( size_t i = 1 ; i < N_args ; i++ ){
                     childArgs[i] = (char*) input[i].c_str();
                 }
-                // 13. The argument array must terminate with a null pointer
+                
+                // 13. The argument array MUST terminate with a null pointer
                 childArgs[ N_args ] = nullptr;
 
-                // 14. Run the command.  The new process will replace this one.
+                // 14. Run the command.  The that program will replace this one, taking over this process
                 execv( cPath , childArgs );
+                
                 // NOTE: If `execv` returns AT ALL it means this process has not been replace and we failed to run the program
                 cout << "Execution of " << cPath << "FAILED!" << endl;
                 running = 0;
             }
         }
     }
-
     return 0;
 }
 
@@ -130,7 +133,8 @@ int main( int argc, char *argv[] ){
          Just know that they check user input. */
 
 vector<string> get_avail_cmd( string path , string prefix ){
-    // Return the available commands
+    // Return the available commands: 
+    // Which are programs in `path` whose filenames begin with `prefix` 
     vector<string> progList = list_path( path );
     size_t len = progList.size();
     vector<string> temp;
@@ -145,7 +149,9 @@ vector<string> get_avail_cmd( string path , string prefix ){
 }
 
 vector<string> parse( string prefix ){
-    // Parse user input, Return a vector of strings
+    // Parse user input, Return a vector of strings, Empty vector indicates exit condition
+    
+    // 0. Init and clear any lingering errors in the `cin` buffer
     string userInput;
     vector<string> rtnVec;
     vector<string> errVec;
@@ -156,6 +162,7 @@ vector<string> parse( string prefix ){
         cin.ignore( INT_MAX ); // Completely discard `cin` buffer
     }
 
+    // 0.1. List available commands and show the shell prompt
     cout << endl << "Available Commands: " << cmdLst << endl << "u-shell$ ";;
 
     // 1. Take input, If no error then ...
@@ -165,16 +172,19 @@ vector<string> parse( string prefix ){
         // 2. Split the input and search for the program
         rtnVec = split( userInput , ' ' );
         string path = prefix + rtnVec[0];
+        
         // 3. Check for exit command
         if( userInput == "exit" ){
             cout << endl << "EXIT shell!" << endl;
             return errVec;
         }
+        
         // 4. Check that the program exists
         if( is_arg_in_vector( rtnVec[0] , cmdLst ) ){
             rtnVec[0] = path;
             return rtnVec;
         } else  return errVec;
+    // 5. else error in parsing, return the exit vector
     } else  return errVec;
 }
 

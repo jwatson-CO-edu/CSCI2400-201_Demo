@@ -91,5 +91,8 @@ bool is_arg_in_vector( T arg , const std::vector<T>& vec ){
     return it != vec.end();
 }
 
+template<typename T>
+T randrange( T lo , T hi ){ return (T) std::min( lo , hi ) + (T) rand_01() * abs( hi - lo ); }
+
 /// END ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #endif

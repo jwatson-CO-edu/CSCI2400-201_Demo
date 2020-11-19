@@ -21,16 +21,17 @@ include_directories(
 # 3. Shortcuts
 set( HELP_CPP ${SRC_DIR}/demo2400_helpers.cpp )
 
-# 3. Some messages to the user to let them know how things are going
-message( "Hello Developer, I am CMake, and I just saved you a ton of keystrokes!" )
+# 4. Some messages to the user to let them know how things are going
+message( "Hello Developer, I am CMake, and I make large prjects *easy*!" )
 message( "Project Name: ${PROJECT_NAME}" )
 message( "~~ Directories ~~" )
-message( "Headers: ${INC_DIR}" )
-message( "Sources: ${SRC_DIR}" )
-message( "Sources: ${SRC_DIR}" )
+message( "Headers:  ${INC_DIR}" )
+message( "Sources:  ${SRC_DIR}" )
+message( "Programs: ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}" )
 
-message( "\n\nBuilding..." )
+# 5. Add executable programs to the project
 
+message( "\n\nWriting build scripts..." )
 
 set( EXEC_NAME Process1 )
 add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
@@ -67,3 +68,9 @@ message( "${EXEC_NAME} ready!" )
 set( EXEC_NAME u_infty )
 add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
 message( "${EXEC_NAME} ready!" )
+
+set( EXEC_NAME Process4 )
+add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
+message( "${EXEC_NAME} ready!" )
+
+message( "\n\n Cmake setup COMPLETED" )
