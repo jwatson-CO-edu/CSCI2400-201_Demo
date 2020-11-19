@@ -9,7 +9,7 @@ int main( int argc, char *argv[] ){
         if( argc > 1 )  echoStr = string( argv[1] );
         if( argc > 2 )  repeat  = stoi( string( argv[2] ) );
     }catch( int e ){
-        cout << "Usage: u_echo <string echo> <int repeats>" << endl;
+        cout << "Usage: u_grid <char element> <int dim>" << endl;
         echoStr = "#";
         repeat  = 5;
     }

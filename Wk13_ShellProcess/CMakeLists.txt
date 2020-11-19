@@ -63,3 +63,7 @@ message( "${EXEC_NAME} ready!" )
 set( EXEC_NAME u_grid )
 add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
 message( "${EXEC_NAME} ready!" )
+
+set( EXEC_NAME u_infty )
+add_executable( ${EXEC_NAME} ${SRC_DIR}/${EXEC_NAME}.cpp ${HELP_CPP} )
+message( "${EXEC_NAME} ready!" )
