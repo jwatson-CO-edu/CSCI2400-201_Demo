@@ -12,32 +12,19 @@ namespace fs = std::filesystem;
 
 int main( int argc, char *argv[] ){
 
-    // 0. Arguments we passed to main:
-    // [ "./out/Process3" , < Name of Program to Run > , < Program arguments > , ... ]
-
-    // 1. Create buffer for incoming arguments and copy them 
-    const int mLen = argc;
+    // 1. Init
+    const int mLen = 3;
     char* msg[ mLen ];
+    cout << "Process3 (PID: " << getpid() << ") has started!" << endl;
     
-    cout << "Process3 got the args: ";
-    // Print the arguments that `Process3`, and load the 3rd arg and after into `msg`
-    for( int i = 0 ; i < argc ; i++ ){
-        cout << i << ": " << argv[i] << ", ";
-        if( i >= 2 ){
-            msg[i-1] = argv[i];
-        }
-        
-    }
-    cout << endl;
 
     // 2. Create a command to execute
-    string progPath = "./out/";  // File path is relative to where called from terminal
-    progPath += argv[1]; 
-    char* cPath = (char*) progPath.c_str(); // NOTE: Here we are usuming the program name and path are the same
+    string progPath = "./out/infty1";  // File path is relative to where called from terminal
+    char*  cPath    = (char*) progPath.c_str(); // NOTE: Here we are usuming the program name and path are the same
     cout << "Program Path: " << progPath << endl;
-    
-    msg[0]        = cPath; // - The first argument must be the program path itself, same as `cPath`
-    msg[ mLen-1 ] = nullptr; // The last arfument MUST be a null pointer so that `execv` knows where the params end
+    msg[0] = cPath; // - The first argument must be the program path itself, same as `cPath`
+    msg[1] = (char*) string( "Hello!" ).c_str();
+    msg[2] = nullptr; // The last arfument MUST be a null pointer so that `execv` knows where the params end
 
 
     // 3. Print the command to be executed, just to check

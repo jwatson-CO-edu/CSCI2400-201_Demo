@@ -19,8 +19,9 @@ int main( int argc, char *argv[] ){
     // register signal SIGINT and signal handler  
     signal( SIGINT , signalHandler );
 
-    cout << "infty1 reveived the following arguments: ";
+    cout << endl << "infty1 (PID: " << getpid() << ") reveived the following arguments: ";
     for( int i = 0 ; i < argc ; i++ ){  cout << argv[i] << ( i == argc-1 ? "\n" : ", " );  }
+    cout << endl;
 
     while( 1 ){
         cout << '.' << flush;
