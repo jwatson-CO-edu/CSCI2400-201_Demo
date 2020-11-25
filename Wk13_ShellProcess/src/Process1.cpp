@@ -2,6 +2,8 @@
 #include <stdio.h> 
 #include <sys/types.h> 
 #include <unistd.h> 
+
+// Process1.cpp
 int main(){ 
 
 	// make two process which run same 

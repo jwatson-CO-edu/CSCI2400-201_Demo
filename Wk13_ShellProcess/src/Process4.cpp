@@ -11,17 +11,19 @@
 vector<char>  alfVec = { 'a' , 'b' , 'c' , 'd' , 'e' , 'f' };
 vector<short> intVec = {  1  ,  2  ,  3  ,  4  ,  5  ,  6  };
 
-template<typename T>
+template<typename T> // If there is a header, template functions must be defined there
 void iterate_slowly( vector<T>& vec , size_t bgn , size_t end ){
     for( size_t i = bgn ; i < end ; i++ ){  
-        cout << vec[i] << flush;
+        cout << vec[i] << flush; // `flush` forces the print, stdout would normally only print on a newline
         usleep( (size_t) randrange( USLEEP_MIN , USLEEP_MAX ) );
     }
 }
 
+// Process4.cpp
 int main(){ 
     random_seed_RUN_ONCE_MAIN();
     
+    // The outer loop is to demonstrate several plausible output orderings
     for( u_char i = 0 ; i < 4 ; i++ ){
     
         pid_t procNum = fork();
