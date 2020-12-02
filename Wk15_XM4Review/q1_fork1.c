@@ -15,11 +15,13 @@ int main(){
     printf( "\n" ); // ADDED
     if( fork() == 0 ){ // If this is the child process, then loop
         for( i = 0 ; i < 2 ; i++ ) {
+            printf( "\nFORK\n" );
             fork();
             counter++;
             fprintf( stderr ,"%d" , counter );
         }
     }else{  wait( &deathCode );  } // ADDED: Parent process, reap child 
-    fprintf( stderr ,"%d" , counter );
+    
+    fprintf( stderr ,"%d" , counter ); // Don't forget! Both processes print here!
 }
 // gcc q1_fork1.c -o q1

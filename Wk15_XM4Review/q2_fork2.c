@@ -9,31 +9,28 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 
-int main() {
-
-    int status;
-    
-    printf( "X" );
-    
-    if( fork() == 0 ){
-        if( fork() == 0 ){
-            printf( "B" );
-        }else{
-            printf( "T" );
-            wait( &status ); 
-            printf( "H" );
-        }
-    }else{
-        printf( "E" );
-        if( fork() == 0 ){
-            printf( "Z" );
-            exit(0);
-        }else{
-            wait( &status );
-            printf( "S" );
-        }
-    }
-    printf( "R" );
-}  
+/*01*/ int main() {
+/*02*/     int status;
+/*03*/     printf( "X" );
+/*04*/     if( fork() == 0 ){
+/*05*/         if( fork() == 0 ){
+/*07*/             printf( "B" );
+/*08*/         }else{
+/*09*/             printf( "T" );
+/*10*/             wait( &status ); 
+/*11*/             printf( "H" );
+/*12*/         }
+/*13*/     }else{
+/*14*/         printf( "E" );
+/*15*/         if( fork() == 0 ){
+/*16*/             printf( "Z" );
+/*17*/             exit(0);
+/*18*/         }else{
+/*20*/             wait( &status );
+/*21*/             printf( "S" );
+/*22*/         }
+/*23*/     }
+/*24*/     printf( "R" );
+/*25*/ }  
 
 // gcc q2_fork2.c -o q2
