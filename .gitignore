@@ -62,3 +62,9 @@ dkms.conf
 */out
 *.save.*
 */*.save.*
+
+# Weekly Ignores
+Wk15_XM4Review/q1
+Wk15_XM4Review/q2
+Wk15_XM4Review/q3
+Wk15_XM4Review/q4
